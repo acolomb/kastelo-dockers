@@ -1,4 +1,4 @@
-FROM debian/jessie
+FROM debian:latest
 MAINTAINER Jakob Borg <jakob@nym.se>
 
 ENV GO_VERSION 1.8.3
@@ -9,7 +9,7 @@ ENV MIN_GO_VERSION 1.7.6
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential zip git mercurial graphviz \
         ca-certificates curl fakeroot rubygems ruby-dev rpm \
-        snapcraft docker.io \
+        snapcraft \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
