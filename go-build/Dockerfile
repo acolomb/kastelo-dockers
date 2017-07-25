@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM ubuntu:latest
 MAINTAINER Jakob Borg <jakob@nym.se>
 
 ENV GO_VERSION 1.8.3
