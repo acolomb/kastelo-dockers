@@ -9,6 +9,7 @@ RUN apt-get update && \
         texlive-latex-extra \
         texlive-fonts-recommended \
         texlive-base \
+	latexmk \
     && apt-get remove -y \
         texlive-fonts-recommended-doc \
         texlive-latex-base-doc \
