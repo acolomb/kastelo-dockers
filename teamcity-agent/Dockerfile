@@ -42,9 +42,7 @@ RUN go get github.com/alecthomas/gometalinter \
 	&& go get github.com/tsenart/deadcode \
 	&& go get golang.org/x/net/html \
 	&& go get golang.org/x/tools/cmd/cover \
-	&& go get honnef.co/go/simple/cmd/gosimple \
-	&& go get honnef.co/go/staticcheck/cmd/staticcheck \
-	&& go get honnef.co/go/unused/cmd/unused
+	&& go get honnef.co/go/tools/...
 
 # Extra
 
