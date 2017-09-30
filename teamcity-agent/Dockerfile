@@ -9,7 +9,7 @@ ENV MIN_GO_VERSION 1.7.6
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential zip git mercurial graphviz \
         ca-certificates curl fakeroot rubygems ruby-dev rpm \
-        snapcraft docker.io ansible \
+        snapcraft docker.io ansible openssh-client \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
