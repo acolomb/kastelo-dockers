@@ -63,3 +63,11 @@ RUN go get github.com/gohugoio/hugo
 
 RUN go get github.com/2tvenom/go-test-teamcity
 
+# Install Node JS & Elm
+
+ENV PATH /usr/local/node/bin:$PATH
+
+RUN curl -sSL https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-x64.tar.xz \
+        | tar -C /usr/local -Jx \
+	&& ln -s /usr/local/node-v6.11.3-linux-x64 /usr/local/node \
+	&& npm install -g elm
