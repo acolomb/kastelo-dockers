@@ -51,13 +51,14 @@ RUN go get golang.org/x/tools/cmd/cover \
 	&& go get github.com/AlekSi/gocov-xml \
 	&& go get github.com/tebeka/go2xunit
 
-# GB
+# GB, for some build setups
 
 RUN go get github.com/constabulary/gb/...
 
-# Fetch hugo, for website builds
+# Hugo, for website builds
 
-RUN go get github.com/gohugoio/hugo
+RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.33/hugo_0.33_Linux-64bit.tar.gz \
+	| tar -C /usr/local/bin -xz
 
 # Teamcity build translator
 
