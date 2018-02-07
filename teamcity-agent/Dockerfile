@@ -1,8 +1,8 @@
 FROM jetbrains/teamcity-minimal-agent
 MAINTAINER Jakob Borg <jakob@nym.se>
 
-ENV GO_VERSION 1.9.2
-ENV MIN_GO_VERSION 1.8.5
+ENV GO_VERSION 1.9.3
+ENV MIN_GO_VERSION 1.8.7
 
 # Install required packages
 
