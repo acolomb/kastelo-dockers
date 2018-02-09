@@ -10,10 +10,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential zip git mercurial graphviz \
         ca-certificates curl fakeroot rubygems ruby-dev rpm \
         snapcraft docker.io ansible openssh-client \
+	libffi-dev \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
-RUN gem install fpm
+RUN gem install --no-ri --no-rdoc fpm
 
 # Install Go
 
