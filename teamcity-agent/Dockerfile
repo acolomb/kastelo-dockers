@@ -65,6 +65,10 @@ RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.33/hugo_0.33
 
 RUN go get github.com/2tvenom/go-test-teamcity
 
+# For setting icon and stuff
+
+RUN go get github.com/josephspurrier/goversioninfo/...
+
 # Install Node JS & Elm
 
 ENV PATH /usr/local/node/bin:$PATH
