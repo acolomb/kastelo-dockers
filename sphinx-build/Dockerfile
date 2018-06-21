@@ -20,7 +20,7 @@ RUN apt-get update && \
     && apt-get clean
 
 RUN pip install \
-    sphinx \
+    sphinx\!=1.7.5 \
     sphinx_rtd_theme \
     sphinx_bootstrap_theme \
     alabaster
