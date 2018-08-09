@@ -2,6 +2,7 @@ FROM jetbrains/teamcity-minimal-agent
 MAINTAINER Jakob Borg <jakob@nym.se>
 
 ENV GO_VERSION 1.10.3
+ENV BETA_GO_VERSION 1.11beta3
 ENV MIN_GO_VERSION 1.9.7
 
 # Install required packages
@@ -20,6 +21,9 @@ RUN gem install --no-ri --no-rdoc fpm
 
 RUN curl -sSL https://golang.org/dl/go${MIN_GO_VERSION}.linux-amd64.tar.gz \
         | tar -C /usr/local -xz && mv /usr/local/go /usr/local/oldgo
+
+RUN curl -sSL https://golang.org/dl/go${BETA_GO_VERSION}.linux-amd64.tar.gz \
+        | tar -C /usr/local -xz && mv /usr/local/go /usr/local/betago
 
 RUN curl -sSL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz \
         | tar -C /usr/local -xz
@@ -52,13 +56,9 @@ RUN go get golang.org/x/tools/cmd/cover \
 	&& go get github.com/AlekSi/gocov-xml \
 	&& go get github.com/tebeka/go2xunit
 
-# GB, for some build setups
-
-RUN go get github.com/constabulary/gb/...
-
 # Hugo, for website builds
 
-RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.33/hugo_0.33_Linux-64bit.tar.gz \
+RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.46/hugo_0.46_Linux-64bit.tar.gz \
 	| tar -C /usr/local/bin -xz
 
 # Teamcity build translator
