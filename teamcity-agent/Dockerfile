@@ -65,7 +65,9 @@ RUN go get github.com/2tvenom/go-test-teamcity
 
 ENV PATH /usr/local/node/bin:$PATH
 
-RUN curl -sSL https://nodejs.org/dist/v6.11.3/node-v6.11.3-linux-x64.tar.xz \
+RUN curl -sSL https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz \
         | tar -C /usr/local -Jx \
-	&& ln -s /usr/local/node-v6.11.3-linux-x64 /usr/local/node \
-	&& npm install -g elm
+	&& ln -s /usr/local/node-v8.11.4-linux-x64 /usr/local/node \
+	&& chmod -R u+rwX /usr/local/node-v8.11.4-linux-x64 \
+	&& npm install -g --unsafe-perm=true elm@0.18
+
