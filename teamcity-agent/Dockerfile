@@ -7,22 +7,22 @@ ENV MIN_GO_VERSION 1.9.7
 # Install required packages
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        build-essential zip git mercurial graphviz \
-        ca-certificates curl fakeroot rubygems ruby-dev rpm \
-        snapcraft docker.io ansible openssh-client \
-	libffi-dev \
-        && apt-get clean \
-        && rm -rf /var/lib/apt/lists/*
+	build-essential zip git mercurial graphviz \
+	ca-certificates curl fakeroot rubygems ruby-dev rpm \
+	snapcraft docker.io ansible openssh-client \
+	libffi-dev apt-transport-https \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN gem install --no-ri --no-rdoc fpm
 
 # Install Go
 
 RUN curl -sSL https://golang.org/dl/go${MIN_GO_VERSION}.linux-amd64.tar.gz \
-        | tar -C /usr/local -xz && mv /usr/local/go /usr/local/oldgo
+	| tar -C /usr/local -xz && mv /usr/local/go /usr/local/oldgo
 
 RUN curl -sSL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz \
-        | tar -C /usr/local -xz
+	| tar -C /usr/local -xz
 
 # Use Go
 
@@ -66,8 +66,17 @@ RUN go get github.com/2tvenom/go-test-teamcity
 ENV PATH /usr/local/node/bin:$PATH
 
 RUN curl -sSL https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz \
-        | tar -C /usr/local -Jx \
+	| tar -C /usr/local -Jx \
 	&& ln -s /usr/local/node-v8.11.4-linux-x64 /usr/local/node \
 	&& chmod -R u+rwX /usr/local/node-v8.11.4-linux-x64 \
 	&& npm install -g --unsafe-perm=true elm@0.18
 
+# Install Dart
+
+ENV PATH=$PATH:/usr/lib/dart/bin:~/.pub-cache/bin
+
+RUN curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+	&& curl -s https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list \
+	&& apt-get update \
+	&& apt-get install dart \
+	&& pub global activate webdev
