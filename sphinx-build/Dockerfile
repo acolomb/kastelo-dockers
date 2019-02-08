@@ -23,4 +23,4 @@ RUN apt-get update && \
 RUN pip install \
     sphinx\!=1.7.5 \
     sphinx_rtd_theme \
-    git+https://github.com/leokoppel/sphinxcontrib-versioning
+    git+https://github.com/kastelo/sphinxcontrib-versioning
