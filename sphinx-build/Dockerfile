@@ -2,6 +2,7 @@ FROM debian:latest
 
 RUN apt-get update && \
     apt-get install -y \
+        git \
         python-pip \
         python-dev \
         texlive \
@@ -22,6 +23,4 @@ RUN apt-get update && \
 RUN pip install \
     sphinx\!=1.7.5 \
     sphinx_rtd_theme \
-    sphinx_bootstrap_theme \
-    alabaster
-
+    git+https://github.com/leokoppel/sphinxcontrib-versioning
