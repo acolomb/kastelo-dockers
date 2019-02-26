@@ -29,29 +29,6 @@ RUN curl -sSL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz \
 ENV PATH /usr/local/go/bin:$PATH
 ENV GOPATH /usr/local
 
-# Fetch required utilities, from build.go setup()
-
-RUN go get github.com/alecthomas/gometalinter \
-	&& go get github.com/AlekSi/gocov-xml \
-	&& go get github.com/axw/gocov/gocov \
-	&& go get github.com/FiloSottile/gvt \
-	&& go get github.com/golang/lint/golint \
-	&& go get github.com/gordonklaus/ineffassign \
-	&& go get github.com/mdempsky/unconvert \
-	&& go get github.com/mitchellh/go-wordwrap \
-	&& go get github.com/opennota/check/cmd/... \
-	&& go get github.com/tsenart/deadcode \
-	&& go get golang.org/x/net/html \
-	&& go get golang.org/x/tools/cmd/cover \
-	&& go get honnef.co/go/tools/...
-
-# Extra
-
-RUN go get golang.org/x/tools/cmd/cover \
-	&& go get golang.org/x/net/html \
-	&& go get github.com/AlekSi/gocov-xml \
-	&& go get github.com/tebeka/go2xunit
-
 # Hugo, for website builds
 
 RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.46/hugo_0.46_Linux-64bit.tar.gz \
@@ -60,16 +37,6 @@ RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.46/hugo_0.46
 # Teamcity build translator
 
 RUN go get github.com/2tvenom/go-test-teamcity
-
-# Install Node JS & Elm
-
-ENV PATH /usr/local/node/bin:$PATH
-
-RUN curl -sSL https://nodejs.org/dist/v8.11.4/node-v8.11.4-linux-x64.tar.xz \
-	| tar -C /usr/local -Jx \
-	&& ln -s /usr/local/node-v8.11.4-linux-x64 /usr/local/node \
-	&& chmod -R u+rwX /usr/local/node-v8.11.4-linux-x64 \
-	&& npm install -g --unsafe-perm=true elm@0.18
 
 # Install Dart
 
