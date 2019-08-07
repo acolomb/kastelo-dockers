@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	build-essential zip git mercurial graphviz \
 	ca-certificates curl fakeroot rubygems ruby-dev rpm \
 	snapcraft docker.io ansible openssh-client \
-	libffi-dev apt-transport-https gnupg \
+	libffi-dev apt-transport-https gnupg osslsigncode \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -37,13 +37,3 @@ RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.46/hugo_0.46
 # Teamcity build translator
 
 RUN go get github.com/2tvenom/go-test-teamcity
-
-# Install Dart
-
-ENV PATH=$PATH:/usr/lib/dart/bin:~/.pub-cache/bin
-
-RUN curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-	&& curl -s https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list \
-	&& apt-get update \
-	&& apt-get install dart \
-	&& pub global activate webdev
