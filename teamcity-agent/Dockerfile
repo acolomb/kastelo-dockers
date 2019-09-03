@@ -1,7 +1,7 @@
 FROM jetbrains/teamcity-minimal-agent
 MAINTAINER Jakob Borg <jakob@nym.se>
 
-ENV GO_VERSION 1.12.9
+ENV GO_VERSION 1.13
 ENV MIN_GO_VERSION 1.11.13
 
 # Install required packages
@@ -29,11 +29,3 @@ RUN curl -sSL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz \
 ENV PATH /usr/local/go/bin:$PATH
 ENV GOPATH /usr/local
 
-# Hugo, for website builds
-
-RUN curl -sSL https://github.com/gohugoio/hugo/releases/download/v0.46/hugo_0.46_Linux-64bit.tar.gz \
-	| tar -C /usr/local/bin -xz
-
-# Teamcity build translator
-
-RUN go get github.com/2tvenom/go-test-teamcity
