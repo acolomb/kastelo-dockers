@@ -3,8 +3,8 @@ FROM debian:latest
 RUN apt-get update && \
     apt-get install -y \
         git \
-        python-pip \
-        python-dev \
+        python3-pip \
+        python3-dev \
         texlive \
         texlive-latex-recommended \
         texlive-latex-extra \
@@ -20,7 +20,6 @@ RUN apt-get update && \
         texlive-pstricks-doc \
     && apt-get clean
 
-RUN pip install \
-    sphinx\!=1.7.5 \
-    sphinx_rtd_theme \
-    git+https://github.com/kastelo/sphinxcontrib-versioning
+RUN pip3 install \
+    sphinx\>=2.2.1 \
+    sphinx_rtd_theme
