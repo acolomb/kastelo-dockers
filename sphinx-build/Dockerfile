@@ -22,4 +22,6 @@ RUN apt-get update && \
 
 RUN pip3 install \
     sphinx\>=2.2.1 \
-    sphinx_rtd_theme
+    sphinx_rtd_theme \
+    sphinxcontrib.httpdomain
+
