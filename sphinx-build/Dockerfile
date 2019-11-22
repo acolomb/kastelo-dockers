@@ -11,6 +11,7 @@ RUN apt-get update && \
         texlive-fonts-recommended \
         texlive-base \
 	latexmk \
+	graphviz \
     && apt-get remove -y \
         texlive-fonts-recommended-doc \
         texlive-latex-base-doc \
