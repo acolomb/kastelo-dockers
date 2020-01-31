@@ -1,8 +1,7 @@
 FROM jetbrains/teamcity-minimal-agent
 MAINTAINER Jakob Borg <jakob@nym.se>
 
-ENV GO_VERSION 1.13.6
-ENV MIN_GO_VERSION 1.12.14
+ENV GO_VERSION 1.13.7
 
 # Install required packages
 
@@ -17,9 +16,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN gem install --no-ri --no-rdoc fpm
 
 # Install Go
-
-RUN curl -sSL https://golang.org/dl/go${MIN_GO_VERSION}.linux-amd64.tar.gz \
-	| tar -C /usr/local -xz && mv /usr/local/go /usr/local/oldgo
 
 RUN curl -sSL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz \
 	| tar -C /usr/local -xz
