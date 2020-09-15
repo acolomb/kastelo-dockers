@@ -1,10 +1,11 @@
 FROM jetbrains/teamcity-minimal-agent
 MAINTAINER Jakob Borg <jakob@nym.se>
 
-ENV GO_VERSION 1.13.8
+ENV GO_VERSION 1.15.2
 
 # Install required packages
 
+USER root
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	build-essential zip git mercurial graphviz \
 	ca-certificates curl fakeroot rubygems ruby-dev rpm \
