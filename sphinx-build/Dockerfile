@@ -30,3 +30,5 @@ RUN pip3 install \
     sphinx-last-updated-by-git \
     sphinx-git
 
+ENTRYPOINT ["make"]
+
