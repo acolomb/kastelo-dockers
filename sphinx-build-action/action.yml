@@ -1,0 +1,12 @@
+name: 'Sphinx Build'
+description: 'Build stuff in Sphinx'
+inputs:
+  target:
+    description: 'What to build'
+    required: true
+    default: 'dirhtml'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.target }}
