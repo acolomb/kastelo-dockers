@@ -25,5 +25,8 @@ RUN pip3 install \
     sphinx\>=2.2.1 \
     sphinx_rtd_theme \
     sphinxcontrib.httpdomain \
-    recommonmark
+    sphinxcontrib-openapi \
+    recommonmark \
+    sphinx-last-updated-by-git \
+    sphinx-git
 
