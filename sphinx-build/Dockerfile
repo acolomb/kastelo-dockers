@@ -22,8 +22,9 @@ RUN apt-get update && \
     && apt-get clean
 
 RUN pip3 install \
-    sphinx\>=2.2.1 \
-    sphinx_rtd_theme \
+    sphinx\>=4.4.0 \
+    alabaster>=0.7.12 \
+    docutils>=0.17.1 \
     sphinxcontrib.httpdomain \
     recommonmark
 
